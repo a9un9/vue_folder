@@ -52,9 +52,9 @@ const children = computed(() =>
 const hasChildren = computed(() => children.value.length > 0);
 
 function onClickRow() {
-  // pilih folder (toggle selection). kita emit id
+    
   emit("select", props.folder.id);
-  // optionally auto-open the node
+  
   open.value = true;
 }
 

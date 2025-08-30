@@ -32,8 +32,7 @@ import type { Folder } from "@/types";
 const props = defineProps<{ folders: Folder[]; parent?: Folder | null }>();
 
 function openFolder(id: number) {
-  // contoh: emit / navigate / tampilkan isi folder
-  // untuk sekarang log saja
+    
   console.log("Open subfolder", id);
 }
 </script>

@@ -24,15 +24,12 @@ import { getAllFolders } from "../services/api";
 const folders = ref<Folder[]>([]);
 const selectedId = ref<number | null>(null);
 
-// derived array (pass plain array to child)
 const foldersArray = computed(() => folders.value);
 
-// selected folder full object (or null)
 const selectedFolder = computed(() =>
   folders.value.find((f) => f.id === selectedId.value) ?? null
 );
 
-// immediate children (subfolders) of selected folder
 const subFolders = computed(() => {
   if (selectedId.value === null) return [];
   return folders.value.filter((f) => f.parent_id === selectedId.value);
@@ -41,7 +38,7 @@ const subFolders = computed(() => {
 onMounted(async () => {
   try {
     folders.value = await getAllFolders();
-    // no selection initially: right panel empty
+    
     selectedId.value = null;
     console.log("folders loaded:", folders.value);
   } catch (err) {
@@ -50,15 +47,18 @@ onMounted(async () => {
 });
 
 function handleSelect(folderId: number | null) {
-  // null meaning "deselect"
+    
   selectedId.value = folderId;
 }
 </script>
 
 <style scoped>
+
+
 .explorer {
   display: flex;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 

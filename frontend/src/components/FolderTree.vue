@@ -20,7 +20,7 @@ import type { Folder } from "@/types";
 import FolderItem from "./FolderItem.vue";
 
 const props = defineProps<{
-  folders: Folder[]; // expect plain array
+  folders: Folder[];
   selectedId?: number | null;
 }>();
 
